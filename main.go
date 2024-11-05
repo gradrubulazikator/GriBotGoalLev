@@ -3,7 +3,7 @@ package main
 import (
     "log"
     "strings"
-
+    "GriBotGoalLev/internal"
     tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
@@ -12,7 +12,8 @@ var userGoals = make(map[int][]string)
 
 func main() {
     // Создаем соединение с Telegram ботом
-    bot, err := tgbotapi.NewBotAPI("7708830195:AAHZ0Olcsgq3njQwjln5u6hfkiFAWRIkSeE")
+    botToken := internal.BotToken // Получаем токен из config.go
+    bot, err := tgbotapi.NewBotAPI(botToken) // Используем botToken вместо telegramBotToken
     if err != nil {
         log.Panic(err)
     }
